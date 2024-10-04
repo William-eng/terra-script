@@ -2,6 +2,16 @@ pipeline {
     agent any
 
     stages {
+        stage('Install Terraform') {
+            steps {
+                sh '''
+                wget https://releases.hashicorp.com/terraform/1.6.0/terraform_1.6.0_linux_amd64.zip
+                unzip terraform_1.6.0_linux_amd64.zip
+                sudo mv terraform /usr/local/bin/
+                '''
+            }
+        }
+
         stage('Checkout Code') {
             steps {
                 // che
