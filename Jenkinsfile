@@ -1,6 +1,12 @@
 pipeline {
     agent any
 
+    environment {
+        AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY_ID')
+        AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
+    }
+
+
     stages {
         stage('Checkout Code') {
             steps {
@@ -12,7 +18,7 @@ pipeline {
         stage('Terraform Init') {
             steps {
                 // Initialize the Terraform working directory
-                sh 'terraform init'
+                sh 'pwd ;  terraform init'
             }
         }
 
