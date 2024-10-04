@@ -19,7 +19,7 @@ pipeline {
         stage('Terraform Plan') {
             steps {
                 // Generate and display an execution plan
-                sh 'terraform plan 
+                sh 'terraform plan' 
             }
         }
 
@@ -29,7 +29,7 @@ pipeline {
             }
             steps {
                 // Apply the Terraform plan automatically
-                sh 'terraform apply -auto-approve 
+                sh 'terraform apply -auto-approve' 
             }
         }
     }
