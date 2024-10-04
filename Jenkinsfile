@@ -18,24 +18,21 @@ pipeline {
         stage('Terraform Init') {
             steps {
                 // Initialize the Terraform working directory
-                sh 'pwd ;  terraform init'
+                sh 'pwd ;  cd terra-script && terraform init'
             }
         }
 
         stage('Terraform Plan') {
             steps {
                 // Generate and display an execution plan
-                sh 'terraform plan' 
+                sh 'cd terra-script && terraform plan' 
             }
         }
 
         stage('Terraform Apply') {
-            when {
-                branch 'main'  // Only apply the changes on the 'main' branch
-            }
             steps {
                 // Apply the Terraform plan automatically
-                sh 'terraform apply -auto-approve' 
+                sh 'cd terra-script && terraform  -auto-approve' 
             }
         }
     }
