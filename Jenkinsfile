@@ -1,7 +1,7 @@
 pipeline {
     agent any
      tools {
-        terraform 'terraform-latest'  // Use the name you configured in the Global Tool Configuration
+        terraform 'Terraform'  // Use the name you configured in the Global Tool Configuration
     }
 
 
