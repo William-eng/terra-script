@@ -1,20 +1,20 @@
-resource "aws_key_pair" "grp8_kp" {
-  key_name   = "keymechterr" # New Key Pair Name 
-  public_key = tls_private_key.grp8_kp.public_key_openssh
-}
+#resource "aws_key_pair" "grp8_kp" {
+ # key_name   = "keymechterr" # New Key Pair Name 
+ # public_key = tls_private_key.grp8_kp.public_key_openssh
+#}
 
 # Generate a new private key
-resource "tls_private_key" "grp8_kp" {
-  algorithm = "RSA"
-  rsa_bits  = 4096
+#resource "tls_private_key" "grp8_kp" {
+#  algorithm = "RSA"
+#  rsa_bits  = 4096
 
-}
+#}
 
 #To create a file or folder to save your Private Key 
-resource "local_file" "grp8_kp" {
-  content  = tls_private_key.grp8_kp.private_key_pem
-  filename = "keymechterr.pem" # Save as a .pem file 
-}
+#resource "local_file" "grp8_kp" {
+ # content  = tls_private_key.grp8_kp.private_key_pem
+#  filename = "keymechterr.pem" # Save as a .pem file 
+# }
 #Create EC2 Instance with NGINX installation via user_data
 resource "aws_instance" "grp6_nginx_server" {
   #depends_on                  = [aws_security_group.g8sg, aws_subnet.g8public]
@@ -22,7 +22,7 @@ resource "aws_instance" "grp6_nginx_server" {
   instance_type               = "t2.micro"
   subnet_id                   = aws_subnet.g8public.id
   associate_public_ip_address = true
-  key_name                    = aws_key_pair.grp8_kp.key_name
+  #key_name                    = aws_key_pair.grp8_kp.key_name
 
   vpc_security_group_ids = [aws_security_group.group_eight.id] # Attach correct SG
 
