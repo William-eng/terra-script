@@ -36,7 +36,7 @@ pipeline {
         stage('Terraform Apply') {
             steps {
                 // Apply the Terraform plan automatically
-                sh ' terraform apply --auto-approve' 
+                sh ' terraform destroy --auto-approve' 
             }
         }
     }
